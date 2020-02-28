@@ -1,0 +1,510 @@
+/** ┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+*** │ FILENAME: esteemed-custom.less                                                               │
+*** │                                                                                              │
+*** │ SUMMARY: Style rules for presenting content on the website of WSU's ESTEEMED MIRA program,   │
+*** │   which is managed by the Division of Academic Engagement and Student Achievement (DAESA).   │
+*** │   The ESTEEMED MIRA website is built using using the builder template of  the Spine parent   │
+*** │   theme of WSUWP, and style rulesets built from the code here are designed to accompany or   │
+*** │   supersede styling associated with the theme.                                               │
+*** │                                                                                              │
+*** │ AUTHOR: Daniel Rieck <daniel.rieck@wsu.edu> (https://github.com/invokeImmediately)           │
+*** └──────────────────────────────────────────────────────────────────────────────────────────────┘
+***  TABLE OF CONTENTS:
+***  ────────────────────────────────────────────────────────────────────────────────────────────
+***  §1: Build entry point from DAESA's CSS development project...............................37
+***  §2: Persistent section header comment for unit specific styling..........................47
+***  §3: Styling at body & page level.........................................................79
+***  §4: Styling at the section level........................................................116
+***    >>> §4.1: Headers.....................................................................120
+***      →→→ §4.1.1: Main header.............................................................124
+***      →→→ §4.1.2: H1 Header Sections......................................................200
+***    >>> §4.2: Headings....................................................................220
+***    >>> §4.3: Asides......................................................................236
+***  §5: Styling at the content grouping level...............................................313
+***    >>> §5.1: Lists.......................................................................317
+***  §6: Styling at the embedded content level...............................................323
+***    >>> §6.1: Tabular data................................................................327
+***  §7: Styling included via Less mixins....................................................333
+***  §8: Site-specific semantic CSS styling..................................................345
+***  §9: Global DAESA footer.................................................................363
+***  §10: Styling of specific components.....................................................463
+***    >>> §10.1: Coming up feed.............................................................467
+***    >>> §10.2: DAESA focus features.......................................................491
+***  ───────────────────────────────────────────────────────────────────────────────────────────────
+**/
+
+/** ================================================================================================
+*** §1: Build entry point from DAESA's CSS development project
+**/
+
+@grid-behavior: "hybrid";
+@oue-rules-wrapper: ~"";
+@import "..\WSU-UE---CSS\variables.less";
+@use-design__daesa-footers: true;
+@import "..\WSU-UE---CSS\css-build-entry-point.less";
+
+/** ================================================================================================
+*** §2: Persistent section header comment for unit specific styling
+**/
+
+/*! ================================================================================================
+*** ESTEEMED MIRA Website Styling Section
+*** ================================================================================================
+*** SUMMARY: CSS code designed for use on Washington State University's [ESTEEMED MIRA PROGRAM]
+***   (https://provost.wsu.edu/daesa/esteeemed/) that was built from precompiled CSS written in the
+***   Less language extension of CSS.
+***
+*** DESCRIPTION: Fully documented, precompiled source code from which this section of the custom
+***   stylesheet was built is developed and maintained on the following GitHub project:
+***   https://github.com/invokeImmediately/provost.wsu.edu_daesa_esteemed/
+***
+*** AUTHOR: Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+***
+*** LICENSE: ISC - Copyright (c) 2020 Daniel C. Rieck.
+***
+***   Permission to use, copy, modify, and/or distribute this software for any purpose with or
+***   without fee is hereby granted, provided that the above copyright notice and this permission
+***   notice appear in all copies.
+***
+***   THE SOFTWARE IS PROVIDED "AS IS" AND DANIEL C. RIECK DISCLAIMS ALL WARRANTIES WITH REGARD TO
+***   THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT
+***   SHALL DANIEL C. RIECK BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR
+***   ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
+***   CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+***   PERFORMANCE OF THIS SOFTWARE.
+*** ================================================================================================
+**/
+
+/** ================================================================================================
+*** §3: Styling at body & page level
+**/
+
+@esteemed-site-bgs-rs: {
+	#jacket {
+		background-repeat: no-repeat;
+		background-position: right bottom;
+
+		body.home:not(.has-background-image) &,
+		& {
+			background: #e5e5e5 url(https://s3.wp.wsu.edu/uploads/sites/1368/2017/03/bg-jacket-4.jpg) no-repeat right top;
+			background-attachment: fixed;
+		}
+	}
+
+	#spine #glue:before {
+		border-right: 1px solid #e5e5e5;
+		background: #fff url(https://s3.wp.wsu.edu/uploads/sites/57/2020/02/bg-spine_daesa.png) no-repeat left bottom;
+		background-attachment: fixed;
+
+		@media only screen and (max-width: 1544px) {
+			background: #fff;
+		}
+	}
+
+	body {
+		background: @hex-bright-gray;
+	}
+
+	main {
+		background: @hex-white;
+		border-left: 1px solid @hex-bright-gray;
+	}
+};
+@esteemed-site-bgs-rs();
+
+/** ================================================================================================
+*** §4: Styling at the section level
+**/
+
+/**   ----------------------------------------------------------------------------------------------
+***   >>> §4.1: Headers
+**/
+
+/**     ····························································································
+***     →→→ §4.1.1: Main header
+**/
+
+@esteemed-main-header-rs: {
+	.main-header {
+		background: rgb(130,12,35,1);
+		background: -moz-linear-gradient(left,rgba(130,12,35,1) 0%,rgba(166,15,45,1) 100%);
+		background: -webkit-linear-gradient(left,rgba(130,12,35,1) 0%,rgba(166,15,45,1) 100%);
+		background: linear-gradient(to right,rgba(130,12,35,1) 0%,rgba(166,15,45,1) 100%);
+		color: @hex-white !important;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#820c23',endColorstr='#a60f2d',GradientType=1);
+		padding: 1rem 0;
+		position: relative;
+
+		.header-group {
+			padding-top: 1em !important;
+			position: relative;
+
+			&:not(.unset) {
+				font-size: 13px;
+				line-height: 1em;
+				padding: .7em 2rem;
+				position: relative;
+			}
+
+		}
+
+		.sub-header,
+		.sup-header {
+			display: inline-block;
+
+			@media screen and (max-width: @spine-threshold) {
+				display: block;
+			}
+		}
+
+		.sub-header,
+		.sup-header,
+		.sub-header-default,
+		.sup-header-default {
+			font-size: inherit !important;
+		}
+
+		.sub-header-default {
+			border-left: 1px solid #fff;
+			font-weight: 300;
+			margin-left: 1em;
+			padding-left: 1.25em;
+			color: #fff;
+
+			@media screen and (max-width: @spine-threshold) {
+				border-left: 0;
+				margin-left: 0;
+				padding-left: 0;
+			}
+		}
+
+		.sub-header-default,
+		.sup-header-default {
+			text-transform: uppercase;
+			width: auto;
+		}
+
+		.sup-header-default {
+			font-weight: bold;
+		}
+
+		sub:not(.unset),
+		sup:not(.unset) {
+			color: @hex-white !important;
+		}
+	}
+};
+@esteemed-main-header-rs();
+
+/**     ····························································································
+***     →→→ §4.1.2: H1 Header Sections
+**/
+
+.use-sectional-article-headers();
+
+.article-header .one > *,
+ {
+	.animation(fade-in; 2s; linear; 0s; 1);
+}
+
+// .h1-header {
+// 	background: black url(https://s3.wp.wsu.edu/uploads/sites/57/2019/07/texture_light-gray-marble_1188x230.jpg) left top/cover no-repeat;
+// 	color: black;
+
+// 	* {
+// 		color: inherit;
+// 	}
+// }
+
+/**   ----------------------------------------------------------------------------------------------
+***   >>> §4.2: Headings
+**/
+
+@esteemed-headings-rs: {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		.tt--uppercase;
+	}
+};
+@esteemed-headings-rs();
+
+/**   ----------------------------------------------------------------------------------------------
+***   >>> §4.3: Asides
+**/
+
+// TODO: Remove?
+
+.column {
+	aside {
+		font-size: .8rem;
+		&+aside {
+			margin-top: @v-dflt-spcng;
+		}
+		p, ul {
+			font-size: inherit;
+			&:not(:last-child) {
+				margin-bottom: 0.8rem;
+			}
+			&:last-child:not(.no-bottom-pad) {
+				padding-bottom: 0;
+			}
+		}
+		&.article-sidebar {
+			background: #f8f1eb url(/wp-content/uploads/sites/1303/2016/11/tileable-concrete-texture_128x128.png) left top repeat;
+			&.green-marble {
+				background: #e3dfcd url(/wp-content/uploads/sites/1303/2016/11/seamless-marble-texture_528x528.png) left top repeat;
+				border: 1px solid #afa370;
+				box-shadow: 3px 3px 3px rgba(57,50,21,0.3333);
+			}
+			&.bluish-gray {
+				background: #edf3f4 url(/wp-content/uploads/sites/1303/2016/11/vertically-tileable-gray-acrylic_opacity-0.15.png) left top repeat-y;
+				background-size: 100% auto;
+				border: 1px solid #464e54;
+				box-shadow: 3px 3px 3px rgba(42,48,51,0.3333);
+			}
+		}
+	}
+}
+
+.column .widget_rss {
+	a {
+		border-bottom: none;
+		box-shadow: none;
+		&:hover {
+			border-bottom: none;
+			box-shadow: none;		
+		}
+		&.rsswidget img {
+			display: none;
+		}
+	}
+	ul li {
+		list-style-type: disc;
+	}
+}
+
+.recent-posts {
+	padding-bottom: (@v-dflt-spcng / 2);
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-color: #edf3f4;
+	box-shadow: 0 1px 2px rgba(red(@hex-black), green(@hex-black), blue(@hex-black), 0.33);
+	& > h4.fancy.with-top-border:first-child {
+		background: linear-gradient(to right,
+		 rgba(red(@hex-crimson), green(@hex-crimson), blue(@hex-crimson), 0.075),
+		 rgba(red(@hex-crimson), green(@hex-crimson), blue(@hex-crimson), 0.075)),
+		 linear-gradient(to right, @hex-white, @hex-white);
+		.has-responsive-font(@v-h4-sz * @v-scl-dwn, @v-hX-lnhght);
+	}
+	a {
+		border-bottom: none;
+		box-shadow: none;
+	}
+	& + & {
+		margin-top: @v-dflt-spcng;
+	}
+}
+
+/** ================================================================================================
+*** §5: Styling at the content grouping level
+**/
+
+/**   ----------------------------------------------------------------------------------------------
+***   >>> §5.1: Lists
+**/
+
+// TODO: Design layout for programs & Units lists
+
+/** ================================================================================================
+*** §6: Styling at the embedded content level
+**/
+
+/**   ----------------------------------------------------------------------------------------------
+***   >>> §6.1: Tabular data
+**/
+
+// TODO: Decide if this is still needed.
+
+/** ================================================================================================
+*** §7: Styling included via Less mixins
+**/
+
+.include-quick-tabs-layout(true);
+.use-linked-columns();
+// @pseudo-footer-bg: { background: @hex-white url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD//gATQ3JlYXRlZCB3aXRoIEdJTVD/2wBDAAEBAQEBAQEBAQEBAQEBAQICAQEBAQMCAgICAwMEBAMDAwMEBAYFBAQFBAMDBQcFBQYGBgYGBAUHBwcGBwYGBgb/2wBDAQEBAQEBAQMCAgMGBAMEBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgb/wgARCAAiAAEDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAWAQEBAQAAAAAAAAAAAAAAAAAABgj/2gAMAwEAAhADEAAAAYTk92AAf//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAQUCP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAT8hP//aAAwDAQACAAMAAAAQAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/ED//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAE/ED//2Q==')
+//  left bottom repeat-x; };
+// .use-main-pseudo-footer(@pseudo-footer-bg, 34px);
+.use-sectional-article-headers();
+// .use-short-main-header-on-pages();
+
+/** ================================================================================================
+*** §8: Site-specific semantic CSS styling
+**/
+
+.wsuwp-content-syndicate-wrapper {
+	.content-item-byline-author {
+	display: none;
+	}
+
+	.content-item-byline-date {
+	display: none;
+	}
+
+	.content-item-read-story {
+	display: none;
+	}
+}
+
+/** ================================================================================================
+*** §9: Global DAESA bar & footer
+**/
+
+@daesa-global-footer-rs: {
+	.globalbar {
+		background: rgb(130,12,35,1);
+		background: -moz-linear-gradient(left,rgba(130,12,35,1) 0%,rgba(166,15,45,1) 100%);
+		background: -webkit-linear-gradient(left,rgba(130,12,35,1) 0%,rgba(166,15,45,1) 100%);
+		background: linear-gradient(to right,rgba(130,12,35,1) 0%,rgba(166,15,45,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#820c23',endColorstr='#a60f2d',GradientType=1);
+		height: 4px;
+		position: fixed;
+		top: 0;
+		width: 1188px;
+		z-index: 99352;
+	}
+
+	.footersection {
+		height: auto;
+		position: relative;
+	}
+
+	.column {
+		.footer {
+			align-items: center;
+			background: #262626;
+			bottom: 0;
+			color: #fff;
+			display: flex;
+			height: auto;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			position: fixed;
+			width: 100%;
+			z-index: 9999;
+
+			@media screen and (max-width: @column-floating-threshold) {
+				position: absolute;
+				
+				ul {
+					white-space: nowrap;
+					overflow-x: auto;
+				}
+			}
+
+			a {
+				border-width: 0;
+				color: white;
+
+				&:hover {
+					background-color: transparent;
+					border-bottom-width: 3px;
+					color: #ca1237;
+				}
+			}
+
+			ul {
+				color: #b7b7b7;
+				display: block;
+				list-style-type: none;
+				margin: 0;
+				padding: 0 2em 0 2.6em;
+				width: 100%;
+
+				li {
+					display: inline;
+					font-size: .65em;
+					font-weight: normal;
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					text-align: left;
+
+					&::before {
+						content: "";
+						display: none;
+						list-style-type: none;
+					}
+
+					&::after {
+						content: ",";
+						margin: 0;
+						list-style-type: none;
+					}
+
+					&:last-child::after {
+						content: "";
+						list-style-type: none;
+					}
+				}
+			}
+		}
+	}
+};
+
+@daesa-global-footer-rs();
+
+
+/** ================================================================================================
+*** §10: Styling of specific components
+**/
+
+/**   ----------------------------------------------------------------------------------------------
+***   >>> §10.1: Coming up feed
+**/
+
+#coming-up-feed {
+	.content-item-event-date {
+		font-weight: bold;
+
+		&:after {
+			content: ":";
+		}
+	}
+
+	.content-item-event-venue {
+		&:before {
+			content: "@ ";
+		}
+
+		&:empty {
+			display: none;
+		}
+	}
+}
+
+/**   ----------------------------------------------------------------------------------------------
+***   >>> §10.2: DAESA focus features
+**/
+
+@daesa-focus-feature-rs: {
+	#daesa-focus-feature {
+		background: #eff0f1;
+
+		.wp-caption-text {
+			padding-left: 2rem;
+			padding-right: 2rem;
+			max-width: 100ch;
+		}
+
+		img {
+			border-bottom: 4px solid #a31d36;
+			display: block;
+		}
+	}
+};
+@daesa-focus-feature-rs();
