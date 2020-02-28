@@ -1,0 +1,39 @@
+{
+  "name": "provost.wsu.edu_daesa_esteemed",
+  "version": "0.0.0",
+  "description": "Front-end web development project for building and maintaining the website of the Division of Academic Engagement and Student Achievement at Washington State University.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/invokeImmediately/provost.wsu.edu_daesa_esteemed.git"
+  },
+  "keywords": [
+    "Washington",
+    "State",
+    "University"
+  ],
+  "author": "Daniel Rieck <danielcrieck@gmail.com> (https://www.linkedin.com/in/danielcrieck/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/invokeImmediately/provost.wsu.edu_daesa_esteemed/issues"
+  },
+  "homepage": "https://github.com/invokeImmediately/provost.wsu.edu_daesa_esteemed#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-extname": "^0.2.2",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-insert": "^0.5.0",
+    "gulp-insert-lines": "git+https://github.com/invokeImmediately/gulp-insert-lines.git",
+    "gulp-less": "^4.0.1",
+    "gulp-regex-replace": "^0.2.3",
+    "gulp-replace": "^1.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-wait": "0.0.2",
+    "pump": "^3.0.0"
+  }
+}
