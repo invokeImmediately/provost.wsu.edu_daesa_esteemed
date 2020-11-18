@@ -5410,6 +5410,12 @@ div.auto-scroller ul li {
 .lh--1500mx {
   line-height: 1.5em;
 }
+.lh--1750mx {
+  line-height: 1.75em;
+}
+.lh--2000mx {
+  line-height: 2em;
+}
 .fw--light {
   font-weight: 300;
 }
